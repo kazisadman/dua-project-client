@@ -49,9 +49,9 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center h-[60px] w-full px-2 bg-sidebar-bg fixed bottom-0 lg:w-17 lg:h-full lg:flex-col lg:justify-between lg:py-2">
+    <div className="sidebar">
       {/* logo */}
-      <div className="hidden lg:block">
+      <div className="show-lg">
         <Image src={"/logo.png"} alt="logo" width={44} height={44} />
       </div>
 
@@ -60,9 +60,7 @@ const Sidebar = () => {
       <ul className="flex items-center w-full gap-6 justify-evenly md:justify-center md:w-fit lg:flex-col">
         {navLinks.map((link, index) => (
           <li
-            className={`w-10 h-10 flex justify-center items-center  rounded-lg ${
-              link.name === "Category" && "active"
-            }`}
+            className={`sidebar-icon ${link.name === "Category" && "active"}`}
             key={index}
           >
             <Link href={`${link.slug}`}>
@@ -78,15 +76,10 @@ const Sidebar = () => {
       </ul>
 
       {/* footer */}
-      <div className="hidden lg:block">
+      <div className="show-lg">
         <ul>
           {footerLink.map((link, index) => (
-            <li
-              className={`w-10 h-10 flex justify-center items-center  rounded-lg ${
-                link.name === "Category" && "active"
-              }`}
-              key={index}
-            >
+            <li className="sidebar-icon" key={index}>
               <Link href={`${link.slug}`}>
                 <Image
                   src={link.icon}

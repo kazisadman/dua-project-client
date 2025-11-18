@@ -1,14 +1,32 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary:#40725f;
   --color-text: #282e29;
   --color-backgound: #fafffa;
   --color-icon-bg: #d9e7d4;
   --color-sidebar-bg: #edf6ea;
+  --color-navbar-icon: #e0ebe099;
 }
 
 @layer components {
   .active {
     @apply bg-icon-bg;
+  }
+
+  .sidebar {
+    @apply flex justify-center items-center h-[60px] w-full px-2 bg-sidebar-bg fixed bottom-0 lg:w-17 lg:h-full lg:flex-col lg:justify-between lg:py-2;
+  }
+
+  .sidebar-icon {
+    @apply flex items-center justify-center w-10 h-10 rounded-lg;
+  }
+
+  .show-lg {
+    @apply hidden lg:block;
+  }
+
+  .flex-btw-center {
+    @apply flex items-center justify-between;
   }
 }
