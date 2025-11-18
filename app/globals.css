@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary:#40725f;
+  --color-primary: #40725f;
   --color-text: #282e29;
   --color-backgound: #fafffa;
   --color-icon-bg: #d9e7d4;
@@ -22,11 +22,25 @@
     @apply flex items-center justify-center w-10 h-10 rounded-lg;
   }
 
+  /* navbar */
+  .navbar {
+    @apply fixed top-0 left-0 flex items-center justify-between w-full h-16 px-4 shadow-sm bg-backgound md:px-6 lg:left-16 lg:w-[calc(100%-64px)];
+  }
+
+  .navbar-icon {
+    @apply w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon;
+  }
+
+  /* utils */
   .show-lg {
     @apply hidden lg:block;
   }
 
   .flex-btw-center {
     @apply flex items-center justify-between;
+  }
+
+  .flex-center{
+    @apply flex items-center
   }
 }

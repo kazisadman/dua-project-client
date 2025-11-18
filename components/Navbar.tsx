@@ -1,12 +1,13 @@
 import Image from "next/image";
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between h-16 px-4 shadow-sm bg-backgound md:px-6">
-      <div className="flex items-center md:items-start gap-2.5 leading-4">
+    <nav className="navbar">
+      <div className="flex-center md:items-start gap-2.5 leading-4">
         {/* menu - mobile view */}
-        <div>
-          <button className="w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon rounded-full">
+        <div className="lg:hidden">
+          <button className="rounded-full navbar-icon">
             <Image
               src={"/sidebar/footer-2.png"}
               alt="menu-icon"
@@ -22,13 +23,15 @@ const Navbar = () => {
           <p className="text-base font-bold text-text">
             Dua <span className="font-normal text-primary">&</span> Ruqyah
           </p>
-          <p className="text-[10px] font-semibold text-text hidden md:block">Hisnul Muslim</p>
+          <p className="text-[10px] font-semibold text-text hidden md:block">
+            Hisnul Muslim
+          </p>
         </div>
       </div>
 
       {/* search and swatch button */}
-      <div className="flex items-center gap-4">
-        <button className="w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon rounded-full">
+      <div className="gap-4 flex-center">
+        <button className="rounded-full navbar-icon">
           <Image
             src={"/navbar/search-icon.png"}
             alt="search-icon"
@@ -37,7 +40,7 @@ const Navbar = () => {
           />
           <span className="sr-only">search</span>
         </button>
-        <button className="w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon rounded-full">
+        <button className="rounded-full navbar-icon">
           <Image
             src={"/navbar/color-swatch-icon.png"}
             alt="menu-icon"
@@ -45,6 +48,20 @@ const Navbar = () => {
             height={18}
           />
           <span className="sr-only">color swatch</span>
+        </button>
+        <button className="lg:flex items-center gap-2 bg-navbar-icon py-2.5 px-3.5 rounded-4xl show-lg">
+          <Image src={"/navbar/flag.png"} alt="flag" width={24} height={18} />
+          <span className="text-sm font-normal">En</span>
+          <FaChevronDown className="text-sm" />
+        </button>
+        <button className="bg-[#417360] lg:flex items-center gap-2 py-2.5 px-3.5 rounded-4xl text-white show-lg">
+          <span className="text-sm font-medium">Support Us</span>
+          <Image
+            src={"/navbar/direct-right.png"}
+            alt="arrow"
+            width={18}
+            height={18}
+          />
         </button>
       </div>
     </nav>
