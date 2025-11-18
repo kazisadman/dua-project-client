@@ -4,7 +4,11 @@
   --color-text: #282e29;
   --color-backgound: #fafffa;
   --color-icon-bg: #d9e7d4;
+  --color-sidebar-bg: #edf6ea;
 }
 
 @layer components {
+  .active {
+    @apply bg-icon-bg;
+  }
 }

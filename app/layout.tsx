@@ -21,8 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Sidebar/>
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body className={`${poppins.className} antialiased`}>
+        <div className="relative">
+          <Sidebar />
+
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
