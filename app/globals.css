@@ -8,6 +8,8 @@
   --color-sidebar-bg: #edf6ea;
   --color-navbar-icon: #e0ebe099;
   --color-settings-btn: #eef6eb;
+  --color-category-icon:#e1ebe1;
+  --color-subcategory-text:#7C827D;
 }
 
 @layer components {
@@ -34,12 +36,12 @@
 
   /* section */
   .aside-container {
-    @apply top-0 z-50 w-full h-full py-6 pl-8 pr-8 text-sm transition-transform duration-200 transform bg-backgound;
+    @apply w-full h-full px-4 py-6 text-sm bg-backgound;
   }
 
   /* settings */
   .settings {
-    @apply fixed right-0 md:w-80 2xl:top-16.25;
+    @apply fixed right-0 top-0 px-8 md:w-80 2xl:top-16.25 z-50 transition-transform duration-200 transform;
   }
 
   /* utils */
