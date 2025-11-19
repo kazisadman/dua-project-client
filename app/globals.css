@@ -32,6 +32,11 @@
     @apply w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon;
   }
 
+  /* settings */
+  .settings{
+    @apply fixed right-0 hidden h-full py-6 text-sm w-80 top-16.25 2xl:block bg-backgound
+  }
+
   /* utils */
   .show-lg {
     @apply hidden lg:block;

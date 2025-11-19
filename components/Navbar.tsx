@@ -40,7 +40,7 @@ const Navbar = () => {
           />
           <span className="sr-only">search</span>
         </button>
-        <button className="rounded-full xl:hidden navbar-icon">
+        <button className="rounded-full 2xl:hidden navbar-icon">
           <Image
             src={"/navbar/color-swatch-icon.png"}
             alt="menu-icon"

@@ -1,29 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { FaChevronRight, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronRight, FaChevronUp } from "react-icons/fa";
 import RangeSlider from "./RangeSlider";
+import OptionHeader from "./OptionHeader";
 
 const Settings = () => {
   const [arabicFontValue, setArabicFontValue] = useState<string>("0");
   const [translationFontValue, setTranslationFontValue] = useState<string>("0");
   return (
-    <section className="fixed right-0 hidden py-6 text-sm w-80 top-16 xl:block">
+    <section className="settings">
       {/* font settings */}
       <div className="pl-8 pr-6 ">
-        <div className="justify-between gap-4 flex-center">
-          <div className="w-8.5 h-8.5 flex justify-center items-center bg-navbar-icon rounded-full">
-            <Image
-              src={"/settings/smallcaps.png"}
-              alt="font-setting"
-              width={18}
-              height={18}
-            />
-          </div>
-          <p className="flex-1 font-semibold text-primary">Font Settings</p>
-          <FaChevronUp className=" text-primary" />
-        </div>
+        <OptionHeader
+          title={"Font Settings"}
+          arrow={FaChevronUp}
+          icon="/settings/smallcaps.png"
+        />
         {/* Arabic font slider */}
         <RangeSlider
           rangeValue={arabicFontValue}
@@ -43,6 +36,17 @@ const Settings = () => {
             Uthma <FaChevronRight />
           </button>
         </div>
+
+        <OptionHeader
+          title={"View Settings"}
+          arrow={FaChevronDown}
+          icon="/settings/copy-success.png"
+        />
+        <OptionHeader
+          title={"Apperance Settings"}
+          arrow={FaChevronDown}
+          icon="/navbar/color-swatch-icon.png"
+        />
       </div>
     </section>
   );
