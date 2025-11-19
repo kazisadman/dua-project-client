@@ -29,12 +29,12 @@
   }
 
   .navbar-icon {
-    @apply w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon;
+    @apply w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon cursor-pointer;
   }
 
   /* settings */
   .settings {
-    @apply fixed right-0 hidden h-full py-6 text-sm w-80 top-16.25 2xl:block bg-backgound;
+    @apply fixed right-0 h-full py-6 text-sm w-full md:w-80 top-0 2xl:top-16.25  bg-backgound;
   }
 
   /* utils */

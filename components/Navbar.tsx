@@ -1,7 +1,12 @@
+"use client";
+
+import { useUIState } from "@/store/useUIStore";
 import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
+  const { toggleSettings } = useUIState();
+
   return (
     <nav className="navbar">
       <div className="flex-center md:items-start gap-2.5 leading-4">
@@ -40,7 +45,10 @@ const Navbar = () => {
           />
           <span className="sr-only">search</span>
         </button>
-        <button className="rounded-full 2xl:hidden navbar-icon">
+        <button
+          onClick={toggleSettings}
+          className="rounded-full 2xl:hidden navbar-icon"
+        >
           <Image
             src={"/navbar/color-swatch-icon.png"}
             alt="menu-icon"
