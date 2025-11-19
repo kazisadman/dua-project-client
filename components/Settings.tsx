@@ -3,15 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FaChevronRight, FaChevronUp } from "react-icons/fa";
+import RangeSlider from "./RangeSlider";
 
 const Settings = () => {
-  const [rangeValue, setRangeValue] = useState("0");
-  console.log(rangeValue);
+  const [arabicFontValue, setArabicFontValue] = useState<string>("0");
+  const [translationFontValue, setTranslationFontValue] = useState<string>("0");
   return (
-    <section className="fixed right-0 hidden w-70 py-3.5 top-16 xl:block border text-sm">
+    <section className="fixed right-0 hidden py-6 text-sm w-80 top-16 xl:block">
       {/* font settings */}
-      <div>
-        <div className="justify-between gap-4 p-2.5 flex-center">
+      <div className="pl-8 pr-6 ">
+        <div className="justify-between gap-4 flex-center">
           <div className="w-8.5 h-8.5 flex justify-center items-center bg-navbar-icon rounded-full">
             <Image
               src={"/settings/smallcaps.png"}
@@ -23,26 +24,22 @@ const Settings = () => {
           <p className="flex-1 font-semibold text-primary">Font Settings</p>
           <FaChevronUp className=" text-primary" />
         </div>
-        <div>
-          <label htmlFor="range" className="font-medium ">
-            Arabic Font Size
-          </label>
-          <div className="justify-between gap-4 py-3 flex-center">
-            <input
-              className="w-full"
-              value={rangeValue}
-              id="range"
-              onChange={(e) => setRangeValue(e.target.value)}
-              type="range"
-              min="0"
-              max="50"
-            />
-            <p className="font-semibold text-primary">{rangeValue}</p>
-          </div>
-        </div>
-        <div>
+        {/* Arabic font slider */}
+        <RangeSlider
+          rangeValue={arabicFontValue}
+          setRangeValue={setArabicFontValue}
+          title={"Arabic Font Size"}
+        />
+        {/* translation font slider */}
+        <RangeSlider
+          rangeValue={translationFontValue}
+          setRangeValue={setTranslationFontValue}
+          title={"Translation Font Size"}
+        />
+
+        <div className="py-3 mx-2">
           <p className="font-medium">Arabic Script & Font Face</p>
-          <button className="justify-between w-full px-4 py-3 rounded-xl flex-center bg-settings-btn">
+          <button className="justify-between w-full px-4 py-3 mt-2 rounded-xl flex-center bg-settings-btn">
             Uthma <FaChevronRight />
           </button>
         </div>

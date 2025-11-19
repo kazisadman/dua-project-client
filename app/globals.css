@@ -44,4 +44,11 @@
   .flex-center {
     @apply flex items-center;
   }
+
+  .slider::-webkit-slider-thumb {
+    @apply w-4 h-4 rounded-full appearance-none bg-primary;
+  }
+  .slider::-moz-slider-thumb {
+    @apply w-4 h-4 rounded-full bg-primary;
+  }
 }
