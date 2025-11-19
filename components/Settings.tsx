@@ -1,16 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import {
-  FaChevronDown,
-  FaChevronRight,
-  FaChevronUp,
-  FaCross,
-} from "react-icons/fa";
+import { FaChevronDown, FaChevronRight, FaChevronUp } from "react-icons/fa";
 import RangeSlider from "./RangeSlider";
 import OptionHeader from "./OptionHeader";
 import { useUIState } from "@/store/useUIStore";
-import { MdCancel } from "react-icons/md";
+import { MdSettings } from "react-icons/md";
+import AsidePanelHeader from "./AsidePanelHeader";
 
 const Settings = () => {
   const [arabicFontValue, setArabicFontValue] = useState<string>("0");
@@ -21,16 +17,20 @@ const Settings = () => {
   return (
     <>
       <section
-        className={`settings transform transition-transform 2xl:translate-x-0 ${isSettingOpen ? "translate-x-0" : "translate-x-full"} z-50 duration-200`}
+        className={`2xl:translate-x-0 ${isSettingOpen ? "translate-x-0" : "translate-x-full"} aside-container settings`}
       >
-        <div
-          onClick={toggleSettings}
-          className="flex justify-end mr-6 cursor-pointer 2xl:hidden"
-        >
-          <MdCancel className="text-xl" />
+        {/* aside panel header */}
+        <div className="2xl:hidden">
+          <AsidePanelHeader
+            title="Settings"
+            Icon={MdSettings}
+            toggleFn={toggleSettings}
+          />
         </div>
-        {/* font settings */}
-        <div className="pl-8 pr-6 ">
+
+        {/* aside panel content */}
+        <div>
+          {/* font settings */}
           <OptionHeader
             title={"Font Settings"}
             arrow={FaChevronUp}
@@ -56,11 +56,14 @@ const Settings = () => {
             </button>
           </div>
 
+          {/* view settings */}
           <OptionHeader
             title={"View Settings"}
             arrow={FaChevronDown}
             icon="/settings/copy-success.png"
           />
+
+          {/* theme settings */}
           <OptionHeader
             title={"Apperance Settings"}
             arrow={FaChevronDown}
@@ -68,8 +71,10 @@ const Settings = () => {
           />
         </div>
       </section>
+
+      {/* overlay */}
       <div
-        className={`fixed inset-0 bg-black opacity-10 ${isSettingOpen ? "block" : "hidden"}`}
+        className={`fixed z-40 inset-0 bg-black opacity-10 ${isSettingOpen ? "block" : "hidden"}`}
       />
     </>
   );

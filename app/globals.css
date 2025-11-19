@@ -32,9 +32,14 @@
     @apply w-9.5 h-9.5 flex justify-center items-center bg-navbar-icon cursor-pointer;
   }
 
+  /* section */
+  .aside-container {
+    @apply top-0 z-50 w-full h-full py-6 pl-8 pr-8 text-sm transition-transform duration-200 transform bg-backgound;
+  }
+
   /* settings */
   .settings {
-    @apply fixed right-0 h-full py-6 text-sm w-full md:w-80 top-0 2xl:top-16.25  bg-backgound;
+    @apply fixed right-0 md:w-80 2xl:top-16.25;
   }
 
   /* utils */
