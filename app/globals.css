@@ -33,8 +33,8 @@
   }
 
   /* settings */
-  .settings{
-    @apply fixed right-0 hidden h-full py-6 text-sm w-80 top-16.25 2xl:block bg-backgound
+  .settings {
+    @apply fixed right-0 hidden h-full py-6 text-sm w-80 top-16.25 2xl:block bg-backgound;
   }
 
   /* utils */
@@ -56,4 +56,8 @@
   .slider::-moz-slider-thumb {
     @apply w-4 h-4 rounded-full bg-primary;
   }
+}
+
+.progress-bar {
+  width: var(--width);
 }
