@@ -1,9 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
+import AsidePanelHeader from "./AsidePanelHeader";
+import { useUIState } from "@/store/useUIStore";
 
 const DuaCategoryPanel = () => {
+  const { toggleCategoryPanel } = useUIState();
+
   return (
-    <section className="h-full w-77 aside-container space-y-2.5">
+    <section
+      className={`lg:sticky lg:top-16.25 aside-container category overflow-y-auto`}
+    >
+      <div className="lg:hidden">
+        <AsidePanelHeader
+          image="/logo.png"
+          title="Dua & Rukyah"
+          subtitle="Hisnul Muslim"
+          toggleFn={toggleCategoryPanel}
+        />
+      </div>
+
       {/* search bar */}
       <div className="gap-4 px-4.5 py-3 bg-gray-100 rounded-full flex-center">
         <CiSearch className="text-2xl" />

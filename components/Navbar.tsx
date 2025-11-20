@@ -5,13 +5,13 @@ import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
-  const { toggleSettings } = useUIState();
+  const { toggleSettings,toggleCategoryPanel } = useUIState();
 
   return (
     <nav className="navbar">
       <div className="flex-center md:items-start gap-2.5 leading-4">
         {/* menu - mobile view */}
-        <div className="lg:hidden">
+        <div onClick={toggleCategoryPanel} className="lg:hidden">
           <button className="rounded-full navbar-icon">
             <Image
               src={"/sidebar/footer-2.png"}

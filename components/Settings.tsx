@@ -12,13 +12,11 @@ const Settings = () => {
   const [arabicFontValue, setArabicFontValue] = useState<string>("0");
   const [translationFontValue, setTranslationFontValue] = useState<string>("0");
 
-  const { isSettingOpen, toggleSettings } = useUIState();
+  const { toggleSettings } = useUIState();
 
   return (
     <>
-      <section
-        className={`2xl:translate-x-0 ${isSettingOpen ? "translate-x-0" : "translate-x-full"} aside-container settings`}
-      >
+      <section className={`2xl:sticky 2xl:top-16.25 aside-container settings overflow-y-auto`}>
         {/* aside panel header */}
         <div className="2xl:hidden">
           <AsidePanelHeader
@@ -71,11 +69,6 @@ const Settings = () => {
           />
         </div>
       </section>
-
-      {/* overlay */}
-      <div
-        className={`fixed z-40 inset-0 bg-black opacity-10 ${isSettingOpen ? "block" : "hidden"}`}
-      />
     </>
   );
 };

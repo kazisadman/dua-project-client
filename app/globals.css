@@ -8,8 +8,8 @@
   --color-sidebar-bg: #edf6ea;
   --color-navbar-icon: #e0ebe099;
   --color-settings-btn: #eef6eb;
-  --color-category-icon:#e1ebe1;
-  --color-subcategory-text:#7C827D;
+  --color-category-icon: #e1ebe1;
+  --color-subcategory-text: #7c827d;
 }
 
 @layer components {
@@ -41,7 +41,19 @@
 
   /* settings */
   .settings {
-    @apply fixed right-0 top-0 px-8 md:w-80 2xl:top-16.25 z-50 transition-transform duration-200 transform;
+    @apply px-8 2xl:h-[calc(100vh-64px)] md:w-80;
+  }
+  .settings-mobile {
+    @apply fixed inset-y-0 right-0 z-20 w-full h-screen transition-transform duration-300 transform 2xl:hidden md:w-80;
+  }
+
+  /* category */
+
+  .category {
+    @apply lg:h-[calc(100vh-64px)] lg:w-77 space-y-2.5 rounded-2xl lg:rounded-none;
+  }
+  .category-mobile {
+    @apply fixed inset-0 z-10 w-full h-screen transition-transform duration-300 transform lg:hidden md:w-77;
   }
 
   /* utils */
