@@ -5,7 +5,7 @@ import SettingsMobilePanel from "@/components/SettingsMobilePanel";
 
 const page = () => {
   return (
-    <div className="h-screen overflow-y-auto">
+    <div className="h-screen overflow-y-auto page-scrollbar">
       <div className="flex justify-between min-h-screen pt-16 lg:pl-17">
         <div className="show-lg">
           <DuaCategoryPanel />

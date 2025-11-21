@@ -56,6 +56,14 @@
     @apply fixed inset-0 z-10 w-full h-screen transition-transform duration-300 transform lg:hidden md:w-77;
   }
 
+  .category-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .category-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 rounded-4xl;
+  }
+
   /* utils */
   .show-lg {
     @apply hidden lg:block;
@@ -74,6 +82,14 @@
   }
   .slider::-moz-slider-thumb {
     @apply w-4 h-4 rounded-full bg-primary;
+  }
+
+  .page-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .page-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-4xl bg-primary;
   }
 }
 
