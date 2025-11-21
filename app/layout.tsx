@@ -28,7 +28,6 @@ export default function RootLayout({
             <Navbar />
             <Sidebar />
           </div>
-
           {children}
         </div>
       </body>

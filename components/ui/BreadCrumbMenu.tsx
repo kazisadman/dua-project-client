@@ -1,50 +1,54 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaChevronRight } from "react-icons/fa";
 
 const BreadCrumbMenu = () => {
-  const location = usePathname().split("/").filter(Boolean);
-  const pathName = location.map((name) => name.split("-").join(" "));
+  const locations = usePathname().split("/").filter(Boolean);
 
-  const pathNameFormatted = pathName.map((name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+  const breadCrumbMenuItem = locations.map((path, index) => {
+    const slug = `/${locations.slice(0, index + 1).join("/")}`;
+
+    const pathName = path
+      .split("-")
+      .map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+      .join(" ");
+
+    return { pathName, slug };
   });
 
-  const formattedPath = ["Home", ...pathNameFormatted];
+  console.log(breadCrumbMenuItem);
 
   return (
-    <div>
-      <div className="flex-center gap-1.5 bg-breadcrumb-bg px-4 md:px-6 lg:px-8.5">
-        <div className="w-4.5 h-4.5 flex-center justify-center">
-          <Image
-            src={"/breadcrumb-icon.png"}
-            alt="breadcrumb-icon"
-            width={18}
-            height={18}
-            className="border"
-          />
-        </div>
-        <ul className="flex-center gap-1.5 justify-between w-fit py-3.5 text-sm text-primary">
-          {formattedPath.map((name, index) => (
-            <li
-              className={`flex-center gap-1.5 ${formattedPath.length - 1 == index && "font-bold"}`}
-              key={index}
-            >
-              {name}
-              {formattedPath.length - 1 == index ? (
-                ""
-              ) : (
-                <span>
-                  <FaChevronRight />
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
+    <nav className="flex-center gap-1.5 page-header">
+      <div className="w-4.5 h-4.5 flex-center justify-center">
+        <Image
+          src={"/breadcrumb-icon.png"}
+          alt="breadcrumb-icon"
+          width={18}
+          height={18}
+          className="border"
+        />
       </div>
-    </div>
+
+      <ul className="flex-center gap-1.5 justify-between w-fit text-sm text-primary">
+        {/* Home routing */}
+        <li>
+          <Link href={"/"}>Home</Link>
+        </li>
+        {breadCrumbMenuItem.length > 1 && <FaChevronRight />}
+
+        {/* Dynamic routing */}
+        {breadCrumbMenuItem.map((item, index) => (
+          <li key={index} className="flex-center gap-1.5">
+            <Link href={item.slug}>{item.pathName}</Link>
+            {breadCrumbMenuItem.length - 1 === index ? "" : <FaChevronRight />}
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 

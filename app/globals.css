@@ -65,6 +65,11 @@
     @apply bg-gray-200 rounded-4xl;
   }
 
+  /* content */
+  .page-header {
+    @apply bg-breadcrumb-bg px-4 md:px-6 lg:px-8.5 py-3.5 border-b border-gray-300;
+  }
+
   /* utils */
   .show-lg {
     @apply hidden lg:block;

@@ -17,8 +17,8 @@ interface UIState {
 export const useUIState = create<UIState>((set) => ({
   isSettingOpen: false,
   isCategoryPanelOpen: false,
-  categoryAccordianId: null,
-  subCategoryAccordianId: null,
+  categoryAccordianId: "1",
+  subCategoryAccordianId: "1",
 
   toggleSettings: () =>
     set((state) => ({
