@@ -10,6 +10,7 @@
   --color-settings-btn: #eef6eb;
   --color-category-icon: #e1ebe1;
   --color-subcategory-text: #7c827d;
+  --color-breadcrumb-bg: #f0f7f0;
 }
 
 @layer components {
@@ -57,7 +58,7 @@
   }
 
   .category-scrollbar::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-1;
   }
 
   .category-scrollbar::-webkit-scrollbar-thumb {

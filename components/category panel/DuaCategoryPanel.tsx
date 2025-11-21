@@ -1,9 +1,9 @@
 "use client";
 
 import { CiSearch } from "react-icons/ci";
-import AsidePanelHeader from "./AsidePanelHeader";
+import AsidePanelHeader from "../ui/AsidePanelHeader";
 import { useUIState } from "@/store/useUIStore";
-import CategoryAccordian from "./CategoryAccordian";
+import CategoryAccordian from "../accordian/CategoryAccordian";
 
 const DuaCategoryPanel = () => {
   const { toggleCategoryPanel } = useUIState();

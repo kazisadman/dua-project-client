@@ -1,7 +1,8 @@
-import DuaCategoryPanel from "@/components/DuaCategoryPanel";
-import DuaMobilePanel from "@/components/DuaMobilePanel";
-import Settings from "@/components/Settings";
-import SettingsMobilePanel from "@/components/SettingsMobilePanel";
+import DuaCategoryPanel from "@/components/category panel/DuaCategoryPanel";
+import DuaMobilePanel from "@/components/category panel/DuaMobilePanel";
+import Settings from "@/components/settings panel/Settings";
+import SettingsMobilePanel from "@/components/settings panel/SettingsMobilePanel";
+import BreadCrumbMenu from "@/components/ui/BreadCrumbMenu";
 
 const page = () => {
   return (
@@ -10,7 +11,8 @@ const page = () => {
         <div className="show-lg">
           <DuaCategoryPanel />
         </div>
-        <div className="flex-1 w-full p-4">
+        <div className="flex-1 w-full">
+          <BreadCrumbMenu />
           <h1>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente
             consectetur veritatis rem dolore sed quibusdam magni eos commodi
@@ -194,7 +196,7 @@ const page = () => {
         </div>
       </div>
       <DuaMobilePanel />
-      <SettingsMobilePanel/>
+      <SettingsMobilePanel />
     </div>
   );
 };

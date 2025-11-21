@@ -4,7 +4,7 @@ import { useUIState } from "@/store/useUIStore";
 import Settings from "./Settings";
 
 const SettingsMobilePanel = () => {
-  const { isSettingOpen,toggleSettings } = useUIState();
+  const { isSettingOpen, toggleSettings } = useUIState();
   return (
     <>
       <div

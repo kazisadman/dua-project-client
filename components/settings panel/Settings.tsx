@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { FaChevronDown, FaChevronRight, FaChevronUp } from "react-icons/fa";
-import RangeSlider from "./RangeSlider";
-import OptionHeader from "./OptionHeader";
+import RangeSlider from "../ui/RangeSlider";
+import OptionHeader from "../ui/OptionHeader";
 import { useUIState } from "@/store/useUIStore";
 import { MdSettings } from "react-icons/md";
-import AsidePanelHeader from "./AsidePanelHeader";
+import AsidePanelHeader from "../ui/AsidePanelHeader";
 
 const Settings = () => {
   const [arabicFontValue, setArabicFontValue] = useState<string>("0");
@@ -16,7 +16,9 @@ const Settings = () => {
 
   return (
     <>
-      <section className={`2xl:sticky 2xl:top-16.25 aside-container settings overflow-y-auto`}>
+      <section
+        className={`2xl:sticky 2xl:top-16.25 aside-container settings overflow-y-auto`}
+      >
         {/* aside panel header */}
         <div className="2xl:hidden">
           <AsidePanelHeader

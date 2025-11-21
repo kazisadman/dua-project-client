@@ -1,6 +1,5 @@
 import { useUIState } from "@/store/useUIStore";
 import Image from "next/image";
-import { useState } from "react";
 
 interface props {
   id: string;
