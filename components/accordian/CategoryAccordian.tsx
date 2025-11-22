@@ -15,7 +15,9 @@ const CategoryAccordian = ({ id }: props) => {
   const openAccordian = categoryAccordianId === id;
 
   return (
-    <div className="w-full space-y-2.5 px-4">
+    <div className={`w-full space-y-2.5 px-4 rounded-2xl ${
+      !openAccordian && "hover:bg-gray-200"
+    }`}>
       {/* category header */}
       <Link
         onClick={() => toggleCategoryAccordian(id)}
@@ -46,14 +48,10 @@ const CategoryAccordian = ({ id }: props) => {
         <div
           className={`space-y-2.5 py-2.5 border-gray-300 border-dashed border-l`}
         >
-          <SubCategoryAccordian id="1" />
-          <SubCategoryAccordian id="2" />
+          <SubCategoryAccordian id="11" />
+          <SubCategoryAccordian id="12" />
         </div>
       </div>
-      {/* {openAccordian ? (
-      ) : (
-        ""
-      )} */}
     </div>
   );
 };

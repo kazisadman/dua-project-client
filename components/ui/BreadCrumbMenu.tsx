@@ -22,7 +22,7 @@ const BreadCrumbMenu = () => {
   console.log(breadCrumbMenuItem);
 
   return (
-    <nav className="flex-center gap-1.5 page-header">
+    <nav className="flex-center gap-1.5 page-header  content-padding">
       <div className="w-4.5 h-4.5 flex-center justify-center">
         <Image
           src={"/breadcrumb-icon.png"}

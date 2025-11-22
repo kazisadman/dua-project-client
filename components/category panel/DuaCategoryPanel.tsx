@@ -8,6 +8,7 @@ import CategoryAccordian from "../accordian/CategoryAccordian";
 const DuaCategoryPanel = () => {
   const { toggleCategoryPanel } = useUIState();
 
+
   return (
     <section
       className={`lg:sticky lg:top-16.25 aside-container category overflow-y-auto space-y-5 category-scrollbar`}

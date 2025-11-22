@@ -11,6 +11,7 @@
   --color-category-icon: #e1ebe1;
   --color-subcategory-text: #7c827d;
   --color-breadcrumb-bg: #f0f7f0;
+  --color-text-gray: #7d827e;
 }
 
 @layer components {
@@ -42,7 +43,7 @@
 
   /* settings */
   .settings {
-    @apply px-8 2xl:h-[calc(100vh-64px)] md:w-80;
+    @apply px-8 2xl:h-[calc(100vh-64px)] md:w-80 2xl:w-83.75;
   }
   .settings-mobile {
     @apply fixed inset-y-0 right-0 z-20 w-full h-screen transition-transform duration-300 transform 2xl:hidden md:w-80;
@@ -51,7 +52,7 @@
   /* category */
 
   .category {
-    @apply lg:h-[calc(100vh-64px)] lg:w-77 space-y-2.5 rounded-2xl lg:rounded-none;
+    @apply lg:h-[calc(100vh-64px)] lg:w-77 2xl:w-83.75 space-y-2.5 rounded-2xl lg:rounded-none;
   }
   .category-mobile {
     @apply fixed inset-0 z-10 w-full h-screen transition-transform duration-300 transform lg:hidden md:w-77;
@@ -67,7 +68,11 @@
 
   /* content */
   .page-header {
-    @apply bg-breadcrumb-bg px-4 md:px-6 lg:px-8.5 py-3.5 border-b border-gray-300;
+    @apply bg-breadcrumb-bg py-3.5 border-b border-gray-300;
+  }
+
+  .content-padding {
+    @apply px-4 md:px-6 lg:px-8 2xl:px-25;
   }
 
   /* utils */
