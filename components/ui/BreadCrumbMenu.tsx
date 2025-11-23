@@ -13,13 +13,14 @@ const BreadCrumbMenu = () => {
 
     const pathName = path
       .split("-")
-      .map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+      .map((name) => {
+        const decode = decodeURIComponent(name);
+        return decode.charAt(0).toUpperCase() + decode.slice(1);
+      })
       .join(" ");
 
     return { pathName, slug };
   });
-
-  console.log(breadCrumbMenuItem);
 
   return (
     <nav className="flex-center gap-1.5 page-header  content-padding">

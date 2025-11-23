@@ -1,7 +1,7 @@
 import ContentPanel from "@/components/content/ContentPanel";
-const page = () => {
+const page = async () => {
   return (
-    <div >
+    <div>
       <ContentPanel />
     </div>
   );

@@ -1,35 +1,39 @@
+"use client";
 import { useUIState } from "@/store/useUIStore";
 import DuaCard from "./DuaCard";
-import { useEffect } from "react";
+import Link from "next/link";
+import { useFetchData } from "@/store/useFetchData";
 
-interface props {
-  id: string;
+interface Props {
+  data: {
+    id: number;
+    title: string;
+    category_title: string;
+  };
 }
 
-const SubCategoryContent = ({ id }: props) => {
-    const { duaRefId } = useUIState();
-  
-    useEffect(() => {
-      document
-        .getElementById(duaRefId)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, [duaRefId]);
-console.log(duaRefId);
-  
+const SubCategoryContent = ({ data }: Props) => {
+  const { duaRefId, subCategoryAccordianId } = useUIState();
+
+  const { id, title, category_title } = data;
+
+  const { getDuas } = useFetchData();
+
+  const matchedDuas = getDuas(id);
+
   return (
     <>
-      <div id={id} className="page-header  content-padding py-5.5">
+      <div className="page-header  content-padding py-5.5">
         <h2 className="font-semibold text-sm text-primary">
-          Section:{" "}
-          <span className="font-normal text-text">
-            The servent is dependent on his lord
-          </span>
+          <Link href={`/dua-categories/${category_title}/${id}`}>
+            Section: <span className="font-normal text-text">{title}</span>
+          </Link>
         </h2>
       </div>
       <div>
-        <DuaCard id="111"/>
-        <DuaCard id="112"/>
-        <DuaCard id="113"/>
+        {matchedDuas.map((item, index) => (
+          <DuaCard key={item.id} data={item} index={index + 1} />
+        ))}
       </div>
     </>
   );

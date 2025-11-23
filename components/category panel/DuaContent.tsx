@@ -2,13 +2,18 @@
 import { useUIState } from "@/store/useUIStore";
 import Image from "next/image";
 
-interface props {
-  id: string;
+interface Props {
+  data: {
+    id: number;
+    title: string;
+  };
 }
-const DuaContent = ({ id }: props) => {
-  const { setDuaRefId,duaRefId } = useUIState();
+const DuaContent = ({ data }: Props) => {
+  const { setDuaRefId, duaRefId } = useUIState();
 
-  const selected = duaRefId === id
+  const { id, title } = data;
+
+  const selected = duaRefId === id;
   return (
     <>
       {/* dua title */}
@@ -25,7 +30,7 @@ const DuaContent = ({ id }: props) => {
           />
         </div>
         <p className={`py-1.5 font-medium ${selected && "text-primary"}`}>
-          4. Allah&apos;s guidance #1
+          {title}
         </p>
       </div>
     </>

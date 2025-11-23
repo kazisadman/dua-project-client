@@ -6,8 +6,8 @@ import BreadCrumbMenu from "@/components/ui/BreadCrumbMenu";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-screen overflow-y-auto page-scrollbar">
-      <div className="flex justify-between min-h-screen pt-16 lg:pl-17">
+    <div className="h-[calc(100vh-64px)] overflow-y-auto page-scrollbar">
+      <div className="flex justify-between min-h-screen lg:pl-17">
         {/* Dua category */}
         <div className="show-lg">
           <DuaCategoryPanel />

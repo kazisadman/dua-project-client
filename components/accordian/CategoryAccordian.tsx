@@ -4,29 +4,66 @@ import { useUIState } from "@/store/useUIStore";
 import Image from "next/image";
 import Link from "next/link";
 import SubCategoryAccordian from "./SubCategoryAccordian";
-
-interface props {
-  id: string;
+import { useFetchData } from "@/store/useFetchData";
+import { notFound, useParams } from "next/navigation";
+import { useEffect } from "react";
+interface Props {
+  data: {
+    id: number;
+    icon: string;
+    category_title: string;
+    total_subCategories: string;
+    total_duas: string;
+    subcategories_id: number[];
+  };
 }
 
-const CategoryAccordian = ({ id }: props) => {
+const CategoryAccordian = ({ data }: Props) => {
+  const { id, icon, category_title, total_duas, total_subCategories } = data;
+
+  const { category } = useParams();
+
+
+  const category_slug = category_title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\s+/g, "-");
+
   const { categoryAccordianId, toggleCategoryAccordian } = useUIState();
 
   const openAccordian = categoryAccordianId === id;
 
+  const { getSubCategories, categories } = useFetchData();
+
+  const matchedSubCategories = getSubCategories(categoryAccordianId);
+
+  useEffect(() => {
+    const matchedCategoryParam = categories.find(
+      (item) =>
+        item.category_title.toLowerCase() ===
+        category?.toString().replace(/and/g, "&").replace(/-/g, " ")
+    );
+
+    if (!matchedCategoryParam) {
+      notFound();
+    }
+  }, [categories, category]);
+
   return (
-    <div className={`w-full space-y-2.5 px-4 rounded-2xl ${
-      !openAccordian && "hover:bg-gray-200"
-    }`}>
+    <div
+      className={`w-full space-y-2.5 px-4 rounded-2xl ${
+        !openAccordian && "hover:bg-gray-200"
+      }`}
+    >
       {/* category header */}
       <Link
         onClick={() => toggleCategoryAccordian(id)}
-        href={"/dua-categories/duas-importance"}
+        href={`/dua-categories/${category_slug}`}
         className="w-full flex-center gap-2.5"
       >
-        <div className="justify-center rounded-full flex-center w-11 h-11 bg-category-icon">
+        <div className="justify-center rounded-xl flex-center w-11 h-11 bg-category-icon">
           <Image
-            src={"/category/group.png"}
+            src={icon}
             alt="category-icon"
             width={32}
             height={32}
@@ -34,9 +71,9 @@ const CategoryAccordian = ({ id }: props) => {
           />
         </div>
         <div className="space-y-1">
-          <p className="font-medium">Dua&apos;s Importsance</p>
+          <p className="font-medium">{category_title}</p>
           <p className="text-xs font-normal text-subcategory-text">
-            7 Subcategories | 50 Duas
+            {total_subCategories} Subcategories | {total_duas} Duas
           </p>
         </div>
       </Link>
@@ -48,8 +85,9 @@ const CategoryAccordian = ({ id }: props) => {
         <div
           className={`space-y-2.5 py-2.5 border-gray-300 border-dashed border-l`}
         >
-          <SubCategoryAccordian id="11" />
-          <SubCategoryAccordian id="12" />
+          {matchedSubCategories.map((item) => (
+            <SubCategoryAccordian key={item.id} data={item} />
+          ))}
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ const Settings = () => {
   return (
     <>
       <section
-        className={`2xl:sticky 2xl:top-16.25 aside-container settings overflow-y-auto`}
+        className={`2xl:sticky 2xl:top-0 aside-container settings overflow-y-auto`}
       >
         {/* aside panel header */}
         <div className="2xl:hidden">

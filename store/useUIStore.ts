@@ -7,26 +7,26 @@ interface UIState {
   isCategoryPanelOpen: boolean;
   toggleCategoryPanel: () => void;
 
-  categoryAccordianId: string | null;
-  toggleCategoryAccordian: (id: string) => void;
+  categoryAccordianId: number;
+  toggleCategoryAccordian: (id: number) => void;
 
-  subCategoryAccordianId: string | null;
-  toggleSubCategoryAccordian: (id: string) => void;
+  subCategoryAccordianId: number | null;
+  toggleSubCategoryAccordian: (id: number) => void;
 
-  subCategoryRefId: string;
-  setSubCategoryRefId: (id: string) => void;
+  subCategoryRefId: number;
+  setSubCategoryRefId: (id: number) => void;
 
-  duaRefId: string;
-  setDuaRefId: (id: string) => void;
+  duaRefId: number | null;
+  setDuaRefId: (id: number) => void;
 }
 
 export const useUIState = create<UIState>((set) => ({
   isSettingOpen: false,
   isCategoryPanelOpen: false,
-  categoryAccordianId: "1",
-  subCategoryAccordianId: "11",
-  subCategoryRefId: "11",
-  duaRefId: "111",
+  categoryAccordianId: 1,
+  subCategoryAccordianId: 11,
+  subCategoryRefId: 11,
+  duaRefId: 101,
 
   toggleSettings: () =>
     set((state) => ({

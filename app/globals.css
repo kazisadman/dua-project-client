@@ -29,7 +29,7 @@
 
   /* navbar */
   .navbar {
-    @apply fixed top-0 left-0 flex items-center justify-between w-full h-16 px-4 shadow-sm bg-backgound md:px-6 lg:left-16 lg:w-[calc(100%-64px)];
+    @apply sticky top-0 left-0 flex items-center justify-between w-full h-16 px-4 shadow-sm bg-backgound md:px-6 lg:left-16 lg:w-[calc(100%-64px)];
   }
 
   .navbar-icon {
