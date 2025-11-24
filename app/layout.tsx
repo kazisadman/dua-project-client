@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/layout/Sidebar";
 import Navbar from "@/components/layout/Navbar";
-import Loader from "@/components/ui/Loader";
+import FetchWrapper from "@/components/FetchWrapper";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,13 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
         <div className="relative overflow-hidden text-text">
-          <Loader/>
-            <div>
-              <Navbar />
-              <Sidebar />
-            </div>
-
-            {children}
+          <div>
+            <Navbar />
+            <Sidebar />
+          </div>
+          <FetchWrapper>{children}</FetchWrapper>
         </div>
       </body>
     </html>

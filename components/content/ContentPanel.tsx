@@ -2,16 +2,12 @@
 
 import { useUIState } from "@/store/useUIStore";
 import SubCategoryContent from "./SubCategoryContent";
-import { useEffect } from "react";
 import { useFetchData } from "@/store/useFetchData";
 
 const ContentPanel = () => {
-  const { subCategoryRefId, categoryAccordianId } = useUIState();
-  const { fetchAll, getSubCategories, getCategory } = useFetchData();
+  const { categoryAccordianId } = useUIState();
+  const { getSubCategories, getCategory } = useFetchData();
 
-  useEffect(() => {
-    fetchAll();
-  }, [fetchAll]);
 
   const matchedSubCategories = getSubCategories(categoryAccordianId);
 

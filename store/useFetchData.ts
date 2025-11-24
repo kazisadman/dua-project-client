@@ -55,9 +55,18 @@ export const useFetchData = create<Data>((set, get) => ({
   loading: false,
 
   fetchAll: async () => {
+    const state = get();
+
+    if (
+      state.categories.length > 0 &&
+      state.subCategories.length > 0 &&
+      state.duas.length > 0
+    ) {
+      return;
+    }
+
     try {
       set({ loading: true });
-
       const [categoriesData, subCategoriesData, duasData] = await Promise.all([
         fetch(
           `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
@@ -93,10 +102,11 @@ export const useFetchData = create<Data>((set, get) => ({
         categories: categories.record,
         subCategories: subCategories.record,
         duas: duas.record,
-        loading: false,
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({ loading: false });
     }
   },
 

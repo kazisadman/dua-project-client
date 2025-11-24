@@ -13,7 +13,6 @@ interface Props {
 }
 
 const SubCategoryContent = ({ data }: Props) => {
-  const { duaRefId, subCategoryAccordianId } = useUIState();
 
   const { id, title, category_title } = data;
 

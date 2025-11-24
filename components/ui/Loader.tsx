@@ -3,7 +3,7 @@
 import { useFetchData } from "@/store/useFetchData";
 
 const Loader = () => {
-  const { loading } = useFetchData();
+  const loading = useFetchData((state) => state.loading);
 
   if (!loading) return null;
 

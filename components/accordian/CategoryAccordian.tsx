@@ -7,6 +7,7 @@ import SubCategoryAccordian from "./SubCategoryAccordian";
 import { useFetchData } from "@/store/useFetchData";
 import { notFound, useParams } from "next/navigation";
 import { useEffect } from "react";
+
 interface Props {
   data: {
     id: number;
@@ -21,22 +22,36 @@ interface Props {
 const CategoryAccordian = ({ data }: Props) => {
   const { id, icon, category_title, total_duas, total_subCategories } = data;
 
+  const { getSubCategories, categories } = useFetchData();
+
+  const { categoryAccordianId, toggleCategoryAccordian } = useUIState();
+
   const { category } = useParams();
 
+  // set category id according to dynamic route
+  useEffect(() => {
+    categories.find((item) => {
+      if (
+        item.category_title.toLocaleLowerCase() ===
+        category?.toString().replace(/and/g, "&").replace(/-/g, " ")
+      ) {
+        toggleCategoryAccordian(item.id);
+      }
+    });
+  }, [categories, category, toggleCategoryAccordian]);
 
+  // convert category title into slug form
   const category_slug = category_title
     .toLowerCase()
     .replace(/&/g, "and")
     .replace(/\s+/g, "-");
 
-  const { categoryAccordianId, toggleCategoryAccordian } = useUIState();
-
   const openAccordian = categoryAccordianId === id;
 
-  const { getSubCategories, categories } = useFetchData();
-
   const matchedSubCategories = getSubCategories(categoryAccordianId);
+  
 
+  // Validate the URL category slug against actual categories.
   useEffect(() => {
     const matchedCategoryParam = categories.find(
       (item) =>
@@ -57,7 +72,6 @@ const CategoryAccordian = ({ data }: Props) => {
     >
       {/* category header */}
       <Link
-        onClick={() => toggleCategoryAccordian(id)}
         href={`/dua-categories/${category_slug}`}
         className="w-full flex-center gap-2.5"
       >

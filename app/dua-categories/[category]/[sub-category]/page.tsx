@@ -1,9 +1,9 @@
-import SubCategoryContent from "@/components/content/SubCategoryContent";
+import SubCategoryPageWrapper from "./SubCategoryPageWrapper";
 
 const page = () => {
   return (
     <div>
-      <SubCategoryContent id="11"/>
+      <SubCategoryPageWrapper/>
     </div>
   );
 };

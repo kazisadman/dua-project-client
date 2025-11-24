@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "app/dua-categories/[category]/[sub-category]/SubCategoryPageWrapper.tsx"
   ],
   "exclude": ["node_modules"]
 }
