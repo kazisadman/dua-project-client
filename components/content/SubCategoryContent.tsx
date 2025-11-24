@@ -24,9 +24,10 @@ const SubCategoryContent = ({ data }: Props) => {
 
   const matchedDuas = getDuas(id);
 
+
   return (
     <>
-      <div className="page-header  content-padding py-5.5">
+      <div id={id.toString()} className="page-header  content-padding py-5.5">
         <h2 className="font-semibold text-sm text-primary">
           <Link
             onClick={() => toggleSubCategoryAccordian(id)}

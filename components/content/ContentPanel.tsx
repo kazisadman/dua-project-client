@@ -3,9 +3,10 @@
 import { useUIState } from "@/store/useUIStore";
 import SubCategoryContent from "./SubCategoryContent";
 import { useFetchData } from "@/store/useFetchData";
+import { useEffect } from "react";
 
 const ContentPanel = () => {
-  const { categoryAccordianId } = useUIState();
+  const { categoryAccordianId,subCategoryRefId } = useUIState();
   const { getSubCategories, getCategory } = useFetchData();
 
 
@@ -13,9 +14,9 @@ const ContentPanel = () => {
 
   const category = getCategory(categoryAccordianId);
 
-  // useEffect(() => {
-  //   document.getElementById(subCategoryRefId)?.scrollIntoView({behavior:"smooth",block:"start"});
-  // }, [subCategoryRefId]);
+  useEffect(() => {
+    document.getElementById(subCategoryRefId.toString())?.scrollIntoView({behavior:"smooth",block:"start"});
+  }, [subCategoryRefId]);
 
   return (
     <section>

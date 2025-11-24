@@ -28,7 +28,10 @@ const CategoryAccordian = ({ data }: Props) => {
 
   const { category } = useParams();
 
+
+
   // set category id according to dynamic route
+  
   useEffect(() => {
     categories.find((item) => {
       if (
@@ -40,6 +43,8 @@ const CategoryAccordian = ({ data }: Props) => {
     });
   }, [categories, category, toggleCategoryAccordian]);
 
+
+
   // convert category title into slug form
   const category_slug = category_title
     .toLowerCase()
@@ -49,7 +54,7 @@ const CategoryAccordian = ({ data }: Props) => {
   const openAccordian = categoryAccordianId === id;
 
   const matchedSubCategories = getSubCategories(categoryAccordianId);
-  
+
 
   // Validate the URL category slug against actual categories.
   useEffect(() => {
