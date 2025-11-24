@@ -24,7 +24,7 @@ export const useUIState = create<UIState>((set) => ({
   isSettingOpen: false,
   isCategoryPanelOpen: false,
   categoryAccordianId: 1,
-  subCategoryAccordianId: 11,
+  subCategoryAccordianId: null,
   subCategoryRefId: 11,
   duaRefId: 101,
 

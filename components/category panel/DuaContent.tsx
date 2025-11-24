@@ -21,7 +21,7 @@ const DuaContent = ({ data }: Props) => {
         onClick={() => setDuaRefId(id)}
         className="flex gap-2.5 cursor-pointer"
       >
-        <div className="flex w-6 h-6">
+        <div className="flex w-8 h-6">
           <Image
             src={"/category/dua-arrow.png"}
             alt="arrow"

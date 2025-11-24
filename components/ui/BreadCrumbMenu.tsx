@@ -1,5 +1,6 @@
 "use client";
 
+import { useFetchData } from "@/store/useFetchData";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,8 +9,34 @@ import { FaChevronRight } from "react-icons/fa";
 const BreadCrumbMenu = () => {
   const locations = usePathname().split("/").filter(Boolean);
 
-  const breadCrumbMenuItem = locations.map((path, index) => {
-    const slug = `/${locations.slice(0, index + 1).join("/")}`;
+  const locationsCopy = [...locations];
+
+  const { getSubCategory } = useFetchData();
+
+  const lastElement = locations[locations.length - 1];
+
+  const isString = isNaN(Number(lastElement));
+
+  if (!isString) {
+    const subCategory = getSubCategory(Number(lastElement));
+
+    const title = subCategory?.title;
+
+    if (!title) return;
+
+    locationsCopy[locationsCopy.length - 1] = title;
+  }
+
+  if (locations.length > 2) {
+    locationsCopy[0] = "...";
+  }
+
+  const breadCrumbMenuItem = locationsCopy.map((path, index) => {
+    let slug = `/${locations.slice(0, index + 1).join("/")}`;
+
+    if (locationsCopy.length > 2 && index === 0) {
+      slug = "/dua-categories";
+    }
 
     const pathName = path
       .split("-")

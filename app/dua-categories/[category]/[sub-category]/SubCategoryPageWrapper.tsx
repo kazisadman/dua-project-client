@@ -1,26 +1,23 @@
-"use client"
+"use client";
 
 import SubCategoryContent from "@/components/content/SubCategoryContent";
 import { useFetchData } from "@/store/useFetchData";
-import { useUIState } from "@/store/useUIStore";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
-const SubCategoryPageWrapper
- = () => {
-  const { categoryAccordianId } = useUIState();
+const SubCategoryPageWrapper = () => {
+  const params = useParams();
+  const subCategoryId = params["sub-category"];
 
-  const {  getSubCategories  } = useFetchData();
+  console.log(subCategoryId);
 
-  const matchedSubCategories = getSubCategories(categoryAccordianId);
+  const { getSubCategory } = useFetchData();
 
+  const data = getSubCategory(Number(subCategoryId));
 
-  return (
-    <div>
-      {matchedSubCategories.map((item) => (
-        <SubCategoryContent key={item.id} data={item} />
-      ))}
-    </div>
-  );
+  if (!data) return;
+
+  return <div>{<SubCategoryContent data={data} />}</div>;
 };
 
-export default SubCategoryPageWrapper
-;
+export default SubCategoryPageWrapper;

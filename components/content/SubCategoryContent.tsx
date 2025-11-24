@@ -1,8 +1,9 @@
 "use client";
-import { useUIState } from "@/store/useUIStore";
 import DuaCard from "./DuaCard";
 import Link from "next/link";
 import { useFetchData } from "@/store/useFetchData";
+import { useParams } from "next/navigation";
+import { useUIState } from "@/store/useUIStore";
 
 interface Props {
   data: {
@@ -13,8 +14,11 @@ interface Props {
 }
 
 const SubCategoryContent = ({ data }: Props) => {
+  const { category } = useParams();
 
-  const { id, title, category_title } = data;
+  const { toggleSubCategoryAccordian } = useUIState();
+
+  const { id, title } = data;
 
   const { getDuas } = useFetchData();
 
@@ -24,7 +28,10 @@ const SubCategoryContent = ({ data }: Props) => {
     <>
       <div className="page-header  content-padding py-5.5">
         <h2 className="font-semibold text-sm text-primary">
-          <Link href={`/dua-categories/${category_title}/${id}`}>
+          <Link
+            onClick={() => toggleSubCategoryAccordian(id)}
+            href={`/dua-categories/${category}/${id}`}
+          >
             Section: <span className="font-normal text-text">{title}</span>
           </Link>
         </h2>

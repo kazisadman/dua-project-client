@@ -44,12 +44,16 @@ interface Data {
   fetchAll: () => Promise<void>;
 
   getCategory: (id: number) => Category | undefined;
+  getSubCategory: (id: number | null) => SubCategory | undefined;
+
   getSubCategories: (id: number) => SubCategory[];
   getDuas: (id: number | null) => Dua[];
 }
 
 export const useFetchData = create<Data>((set, get) => ({
   categories: [],
+  subCategory: [],
+
   subCategories: [],
   duas: [],
   loading: false,
@@ -108,6 +112,10 @@ export const useFetchData = create<Data>((set, get) => ({
     } finally {
       set({ loading: false });
     }
+  },
+
+  getSubCategory: (id) => {
+    return get().subCategories?.find((item) => item.id === id);
   },
 
   getCategory: (id) => {
