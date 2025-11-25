@@ -18,11 +18,12 @@ interface props {
       ref_no: number;
     };
   };
-  index:number;
+  index: number;
 }
 
-const DuaCard = ({ data,index }: props) => {
+const DuaCard = ({ data, index }: props) => {
   const {
+    id,
     title,
     description,
     arabic,
@@ -31,10 +32,14 @@ const DuaCard = ({ data,index }: props) => {
     reference,
   } = data;
   return (
-    <div className="pt-5 pb-10 content-padding space-y-8 bg-backgound border-b border-gray-300">
+    <div
+      className="pt-5 pb-10 content-padding space-y-8 bg-backgound border-b border-gray-300"
+    >
       <div className="flex-center gap-5">
         <Image src={"/card-icon.png"} alt="card-logo" width={24} height={24} />
-        <h3 className="text-sm font-semibold text-primary">{index}. {title}</h3>
+        <h3 className="text-sm font-semibold text-primary">
+          {index}. {title}
+        </h3>
       </div>
       <p className="leading-7">{description}</p>
       <p className="text-[1.6rem] text-right leading-14 tracking-widest">

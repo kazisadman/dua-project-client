@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SubCategoryAccordian from "./SubCategoryAccordian";
 import { useFetchData } from "@/store/useFetchData";
-import { notFound, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
 interface Props {
@@ -24,26 +24,39 @@ const CategoryAccordian = ({ data }: Props) => {
 
   const { getSubCategories, categories } = useFetchData();
 
-  const { categoryAccordianId, toggleCategoryAccordian } = useUIState();
+  const {
+    categoryAccordianId,
+    toggleCategoryAccordian,
+    setSubCategoryRefId,
+    toggleSubCategoryAccordian,
+  } = useUIState();
 
   const { category } = useParams();
 
-
-
   // set category id according to dynamic route
-  
+
   useEffect(() => {
-    categories.find((item) => {
-      if (
+    const matchedCategory = categories.find(
+      (item) =>
         item.category_title.toLocaleLowerCase() ===
         category?.toString().replace(/and/g, "&").replace(/-/g, " ")
-      ) {
-        toggleCategoryAccordian(item.id);
-      }
-    });
-  }, [categories, category, toggleCategoryAccordian]);
+    );
 
+    if (!matchedCategory) return;
 
+    toggleCategoryAccordian(matchedCategory.id);
+
+    const firstElement = matchedCategory.subcategories_id[0];
+
+    setSubCategoryRefId(firstElement);
+    toggleSubCategoryAccordian(firstElement);
+  }, [
+    categories,
+    category,
+    toggleCategoryAccordian,
+    setSubCategoryRefId,
+    toggleSubCategoryAccordian,
+  ]);
 
   // convert category title into slug form
   const category_slug = category_title
@@ -54,20 +67,6 @@ const CategoryAccordian = ({ data }: Props) => {
   const openAccordian = categoryAccordianId === id;
 
   const matchedSubCategories = getSubCategories(categoryAccordianId);
-
-
-  // Validate the URL category slug against actual categories.
-  useEffect(() => {
-    const matchedCategoryParam = categories.find(
-      (item) =>
-        item.category_title.toLowerCase() ===
-        category?.toString().replace(/and/g, "&").replace(/-/g, " ")
-    );
-
-    if (!matchedCategoryParam) {
-      notFound();
-    }
-  }, [categories, category]);
 
   return (
     <div

@@ -4,6 +4,7 @@ import "./globals.css";
 import Sidebar from "@/components/layout/Sidebar";
 import Navbar from "@/components/layout/Navbar";
 import FetchWrapper from "@/components/FetchWrapper";
+import Loader from "@/components/ui/Loader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,11 +26,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
         <div className="relative overflow-hidden text-text">
-          <div>
-            <Navbar />
-            <Sidebar />
-          </div>
-          <FetchWrapper>{children}</FetchWrapper>
+          <FetchWrapper>
+            <Loader />
+            <div>
+              <Navbar />
+              <Sidebar />
+            </div>
+            {children}
+          </FetchWrapper>
         </div>
       </body>
     </html>

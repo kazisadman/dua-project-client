@@ -9,7 +9,7 @@ interface Props {
     id: number;
     title: string;
     category_id: number;
-    duas_id: number[];
+    dua_id: number[];
     category_title: string;
   };
 }

@@ -6,16 +6,17 @@ import { useFetchData } from "@/store/useFetchData";
 import { useEffect } from "react";
 
 const ContentPanel = () => {
-  const { categoryAccordianId,subCategoryRefId } = useUIState();
+  const { categoryAccordianId, subCategoryRefId } = useUIState();
   const { getSubCategories, getCategory } = useFetchData();
-
 
   const matchedSubCategories = getSubCategories(categoryAccordianId);
 
   const category = getCategory(categoryAccordianId);
 
   useEffect(() => {
-    document.getElementById(subCategoryRefId.toString())?.scrollIntoView({behavior:"smooth",block:"start"});
+    document
+      .getElementById(subCategoryRefId.toString())
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [subCategoryRefId]);
 
   return (

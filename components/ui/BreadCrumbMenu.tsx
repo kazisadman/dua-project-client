@@ -66,12 +66,14 @@ const BreadCrumbMenu = () => {
         <li>
           <Link href={"/"}>Home</Link>
         </li>
-        {breadCrumbMenuItem.length > 1 && <FaChevronRight />}
+        {breadCrumbMenuItem.length > 0 && <FaChevronRight />}
 
         {/* Dynamic routing */}
         {breadCrumbMenuItem.map((item, index) => (
           <li key={index} className="flex-center gap-1.5">
-            <Link href={item.slug}>{item.pathName}</Link>
+            <Link className="line-clamp-1" href={item.slug}>
+              {item.pathName}
+            </Link>
             {breadCrumbMenuItem.length - 1 === index ? "" : <FaChevronRight />}
           </li>
         ))}

@@ -15,7 +15,7 @@ interface SubCategory {
   id: number;
   category_id: number;
   title: string;
-  duas_id: number[];
+  dua_id: number[];
   category_title: string;
 }
 
@@ -73,7 +73,7 @@ export const useFetchData = create<Data>((set, get) => ({
       set({ loading: true });
       const [categoriesData, subCategoriesData, duasData] = await Promise.all([
         fetch(
-          `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
           {
             headers: {
               "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
@@ -81,7 +81,7 @@ export const useFetchData = create<Data>((set, get) => ({
           }
         ),
         fetch(
-          `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_SUBCATEGORY_BIN_ID}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SUBCATEGORY_BIN_ID}`,
           {
             headers: {
               "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
@@ -89,7 +89,7 @@ export const useFetchData = create<Data>((set, get) => ({
           }
         ),
         fetch(
-          `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_DUA_BIN_ID}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DUA_BIN_ID}`,
           {
             headers: {
               "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
@@ -108,7 +108,7 @@ export const useFetchData = create<Data>((set, get) => ({
         duas: duas.record,
       });
     } catch (err) {
-      console.log(err);
+      throw err;
     } finally {
       set({ loading: false });
     }

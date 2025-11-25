@@ -15,9 +15,6 @@ interface UIState {
 
   subCategoryRefId: number;
   setSubCategoryRefId: (id: number) => void;
-
-  duaRefId: number | null;
-  setDuaRefId: (id: number) => void;
 }
 
 export const useUIState = create<UIState>((set) => ({
@@ -26,7 +23,6 @@ export const useUIState = create<UIState>((set) => ({
   categoryAccordianId: 1,
   subCategoryAccordianId: null,
   subCategoryRefId: 11,
-  duaRefId: 101,
 
   toggleSettings: () =>
     set((state) => ({
@@ -51,7 +47,5 @@ export const useUIState = create<UIState>((set) => ({
     })),
 
   setSubCategoryRefId: (id) =>
-    set((status) => ({ subCategoryRefId: (status.subCategoryRefId = id) })),
-
-  setDuaRefId: (id) => set((status) => ({ duaRefId: (status.duaRefId = id) })),
+    set((state) => ({ subCategoryRefId: (state.subCategoryRefId = id) })),
 }));

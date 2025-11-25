@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 
 const SubCategoryPageWrapper = () => {
   const params = useParams();
-  
+
   const subCategoryId = params["sub-category"];
 
   const { getSubCategory } = useFetchData();

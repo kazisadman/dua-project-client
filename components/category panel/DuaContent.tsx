@@ -1,5 +1,5 @@
 "use client";
-import { useUIState } from "@/store/useUIStore";
+
 import Image from "next/image";
 
 interface Props {
@@ -9,18 +9,12 @@ interface Props {
   };
 }
 const DuaContent = ({ data }: Props) => {
-  const { setDuaRefId, duaRefId } = useUIState();
+  const { title } = data;
 
-  const { id, title } = data;
-
-  const selected = duaRefId === id;
   return (
     <>
       {/* dua title */}
-      <div
-        onClick={() => setDuaRefId(id)}
-        className="flex gap-2.5 cursor-pointer"
-      >
+      <div className="flex gap-2.5 cursor-pointer">
         <div className="flex w-8 h-6">
           <Image
             src={"/category/dua-arrow.png"}
@@ -29,7 +23,7 @@ const DuaContent = ({ data }: Props) => {
             height={24}
           />
         </div>
-        <p className={`py-1.5 font-medium ${selected && "text-primary"}`}>
+        <p className={`py-1.5 font-medium`}>
           {title}
         </p>
       </div>
