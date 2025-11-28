@@ -6,35 +6,31 @@ import { GoCopy } from "react-icons/go";
 interface props {
   data: {
     id: number;
-    subCategory_id: number;
+    subcategory_id: number;
     category_id: number;
     title: string;
     description: string;
     arabic: string;
     transliteration: string;
     translation: string;
-    reference: {
-      hadith: string;
-      ref_no: number;
-    };
+    hadith: string;
+    ref_no: string;
   };
   index: number;
 }
 
 const DuaCard = ({ data, index }: props) => {
   const {
-    id,
     title,
     description,
     arabic,
     translation,
     transliteration,
-    reference,
+    hadith,
+    ref_no,
   } = data;
   return (
-    <div
-      className="pt-5 pb-10 content-padding space-y-8 bg-backgound border-b border-gray-300"
-    >
+    <div className="pt-5 pb-10 content-padding space-y-8 bg-backgound border-b border-gray-300">
       <div className="flex-center gap-5">
         <Image src={"/card-icon.png"} alt="card-logo" width={24} height={24} />
         <h3 className="text-sm font-semibold text-primary">
@@ -54,7 +50,7 @@ const DuaCard = ({ data, index }: props) => {
         <div>
           <p className="text-text-gray">Refrence</p>
           <p>
-            {reference.hadith}: <span>{reference.ref_no}</span>{" "}
+            {hadith}: <span>{ref_no}</span>{" "}
           </p>
         </div>
         <div className="flex-center justify-between text-xl gap-7">

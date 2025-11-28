@@ -10,7 +10,7 @@ const HomePage = () => {
   const { categories } = useFetchData();
 
   return (
-    <div className="">
+    <div className="pb-16 lg:pb-0">
       <BreadCrumbMenu />
       <div className="">
         <div className="flex-center justify-between px-3 bg-breadcrumb-bg ">
@@ -56,7 +56,7 @@ const HomePage = () => {
                 <div className="space-y-1">
                   <p className="font-medium">{item.category_title}</p>
                   <p className="text-xs font-normal text-subcategory-text">
-                    {item.total_subCategories} Subcategories | {item.total_duas}{" "}
+                    {item.total_subcategories} Subcategories | {item.total_duas}{" "}
                     Duas
                   </p>
                 </div>

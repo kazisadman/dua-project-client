@@ -13,14 +13,14 @@ interface Props {
     id: number;
     icon: string;
     category_title: string;
-    total_subCategories: string;
+    total_subcategories: string;
     total_duas: string;
     subcategories_id: number[];
   };
 }
 
 const CategoryAccordian = ({ data }: Props) => {
-  const { id, icon, category_title, total_duas, total_subCategories } = data;
+  const { id, icon, category_title, total_duas, total_subcategories } = data;
 
   const { getSubCategories, categories } = useFetchData();
 
@@ -91,7 +91,7 @@ const CategoryAccordian = ({ data }: Props) => {
         <div className="space-y-1">
           <p className="font-medium">{category_title}</p>
           <p className="text-xs font-normal text-subcategory-text">
-            {total_subCategories} Subcategories | {total_duas} Duas
+            {total_subcategories} Subcategories | {total_duas} Duas
           </p>
         </div>
       </Link>

@@ -6,14 +6,14 @@ interface Category {
   id: number;
   category_title: string;
   icon: string;
-  total_subCategories: string;
+  total_subcategories: string;
   total_duas: string;
   subcategories_id: number[];
 }
 
 interface SubCategory {
   id: number;
-  category_id: number;
+  Category_id: number;
   title: string;
   dua_id: number[];
   category_title: string;
@@ -21,7 +21,7 @@ interface SubCategory {
 
 interface Dua {
   id: number;
-  subCategory_id: number;
+  subcategory_id: number;
   category_id: number;
   title: string;
   category_title: string;
@@ -29,10 +29,8 @@ interface Dua {
   arabic: string;
   transliteration: string;
   translation: string;
-  reference: {
-    hadith: string;
-    ref_no: number;
-  };
+  hadith: string;
+  ref_no: string;
 }
 
 interface Data {
@@ -72,30 +70,9 @@ export const useFetchData = create<Data>((set, get) => ({
     try {
       set({ loading: true });
       const [categoriesData, subCategoriesData, duasData] = await Promise.all([
-        fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
-          {
-            headers: {
-              "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-            },
-          }
-        ),
-        fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SUBCATEGORY_BIN_ID}`,
-          {
-            headers: {
-              "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-            },
-          }
-        ),
-        fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DUA_BIN_ID}`,
-          {
-            headers: {
-              "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-            },
-          }
-        ),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/categories`),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/subcategories`),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/duas`),
       ]);
 
       const categories = await categoriesData.json();
@@ -103,9 +80,9 @@ export const useFetchData = create<Data>((set, get) => ({
       const duas = await duasData.json();
 
       set({
-        categories: categories.record,
-        subCategories: subCategories.record,
-        duas: duas.record,
+        categories: categories,
+        subCategories: subCategories,
+        duas: duas,
       });
     } catch (err) {
       throw err;
@@ -123,10 +100,10 @@ export const useFetchData = create<Data>((set, get) => ({
   },
 
   getSubCategories: (id) => {
-    return get().subCategories.filter((item) => item.category_id === id);
+    return get().subCategories.filter((item) => item.Category_id === id);
   },
 
   getDuas: (id) => {
-    return get().duas.filter((item) => item.subCategory_id === id);
+    return get().duas.filter((item) => item.subcategory_id === id);
   },
 }));

@@ -5,7 +5,7 @@ interface Category {
   id: number;
   category_title: string;
   icon: string;
-  total_subCategories: string;
+  total_subcategories: string;
   total_duas: string;
   subcategories_id: number[];
 }
@@ -14,18 +14,10 @@ const page = async ({ params }: { params: { category: string } }) => {
   try {
     const { category } = await params;
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
-      {
-        headers: {
-          "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-        },
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/categories`);
 
-    const formatted = await res.json();
 
-    const data = formatted.record;
+    const data = await res.json();
 
     const exists = data.some(
       (item: Category) =>
@@ -51,17 +43,10 @@ export default page;
 
 export async function generateStaticParams() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_CATEGORY_BIN_ID}`,
-      {
-        headers: {
-          "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-        },
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/categories`);
 
     const data = await res.json();
-    const slugs = data.record.map((item: Category) => {
+    const slugs = data.map((item: Category) => {
       const formatted = item.category_title
         .toLowerCase()
         .replace(/&/g, "and")

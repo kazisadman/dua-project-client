@@ -8,7 +8,7 @@ interface Props {
   data: {
     id: number;
     title: string;
-    category_id: number;
+    Category_id: number;
     dua_id: number[];
     category_title: string;
   };

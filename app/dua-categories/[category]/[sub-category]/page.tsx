@@ -17,17 +17,11 @@ const page = async ({
   const { category, "sub-category": subCategory } = await params;
 
   const subCategoryRes = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SUBCATEGORY_BIN_ID}`,
-    {
-      headers: {
-        "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-      },
-    }
+    `${process.env.NEXT_PUBLIC_BASE_URL}/subcategories`
   );
 
-  const formatted = await subCategoryRes.json();
+  const subCategoryData = await subCategoryRes.json();
 
-  const subCategoryData = formatted.record;
 
   const exists = subCategoryData.some((item: SubCategory) => {
     const categorySlug = item.category_title
@@ -55,17 +49,12 @@ export default page;
 
 export async function generateStaticParams() {
   const subCategoryRes = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SUBCATEGORY_BIN_ID}`,
-    {
-      headers: {
-        "X-Master-Key": `${process.env.NEXT_PUBLIC_X_MASTER_KEY}`,
-      },
-    }
+    `${process.env.NEXT_PUBLIC_BASE_URL}/subcategories`
   );
 
   const subCategoryData = await subCategoryRes.json();
 
-  const subCategorySlugs = subCategoryData.record.map((item: SubCategory) => {
+  const subCategorySlugs = subCategoryData.map((item: SubCategory) => {
     const category = item.category_title
       .toLowerCase()
       .replace(/&/g, "and")

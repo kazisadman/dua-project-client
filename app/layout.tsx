@@ -23,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+    <html lang="en" className={`${poppins.className}`}>
+      <body className={` antialiased`}>
         <div className="relative overflow-hidden text-text">
           <FetchWrapper>
             <Loader />

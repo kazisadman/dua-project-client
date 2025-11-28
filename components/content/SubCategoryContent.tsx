@@ -15,7 +15,7 @@ interface Props {
 
 const SubCategoryContent = ({ data }: Props) => {
   const { category } = useParams();
-
+  
   const { toggleSubCategoryAccordian } = useUIState();
 
   const { id, title } = data;
